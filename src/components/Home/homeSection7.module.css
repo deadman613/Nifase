@@ -1,0 +1,238 @@
+.section {
+  position: relative;
+  width: 100%;
+  background: radial-gradient(circle at top, #020617, #000000 70%);
+  color: #f9fafb;
+  padding: 5rem 1.75rem 6rem;
+  overflow: hidden;
+}
+.section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+
+.bgGlow {
+  position: absolute;
+  left: 55%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 720px;
+  height: 720px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.4), transparent 70%);
+  filter: blur(26px);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.5) 1px, transparent 1px);
+  background-size: 90px 90px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+  gap: 3.5rem;
+  align-items: flex-start;
+  z-index: 1;
+}
+
+/* left text */
+
+.left {
+  max-width: 420px;
+}
+
+.kicker {
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.9);
+  margin-bottom: 0.9rem;
+}
+
+.heading {
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.1rem;
+  font-weight: 500;
+}
+
+.headingAccent {
+  background: linear-gradient(120deg, #22c55e, #a3e635);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sub {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(209, 213, 219, 0.9);
+}
+
+/* right accordion */
+
+.right {
+  position: relative;
+  border-radius: 1.4rem;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.9),
+    0 0 32px rgba(34, 197, 94, 0.25);
+  backdrop-filter: blur(18px);
+  padding: 1.2rem;
+}
+
+.item {
+  position: relative;
+  border-radius: 1rem;
+  padding: 0.25rem 0.75rem;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item + .item {
+  margin-top: 0.4rem;
+}
+
+.itemOpen {
+  background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.15), transparent 70%);
+  box-shadow: 0 0 24px rgba(34, 197, 94, 0.25);
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 0.9rem 0.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.q {
+  text-align: left;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: rgba(243, 244, 246, 0.96);
+}
+
+/* icon */
+
+.icon {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.icon span {
+  width: 10px;
+  height: 2px;
+  border-radius: 999px;
+  background: #e5f9e9;
+  position: relative;
+}
+
+.icon span::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  border-radius: 999px;
+  background: #e5f9e9;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s ease;
+}
+
+.iconOpen {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.4), transparent 70%);
+  border-color: rgba(34, 197, 94, 0.9);
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.8);
+  transform: rotate(180deg);
+}
+
+.iconOpen span::after {
+  opacity: 0; /* plus → minus */
+}
+
+/* body */
+
+.body {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.bodyInner {
+  padding: 0 0.2rem 0.75rem;
+}
+
+.bodyInner p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(148, 163, 184, 0.96);
+}
+
+/* responsive */
+
+@media (max-width: 960px) {
+  .section {
+    padding: 4.5rem 1.5rem 5rem;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .left {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 4rem 1.25rem 4.5rem;
+  }
+
+  .right {
+    padding: 1rem;
+  }
+
+  .q {
+    font-size: 0.95rem;
+  }
+
+  .bodyInner p {
+    font-size: 0.86rem;
+  }
+}

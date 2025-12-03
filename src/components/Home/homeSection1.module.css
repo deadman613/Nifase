@@ -1,0 +1,364 @@
+/* Container */
+.container {
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    background: #000000;
+    /* background-color: #8b5cf6; */
+    position: relative;
+    overflow-y: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+
+/* Hero Wrapper */
+.heroWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    background: transparent;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6rem 1rem 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero Content */
+.heroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Badge */
+.badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow: hidden;
+    border-radius: 9999px;
+    padding: 0.5rem 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 300ms ease;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.badge:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.spark {
+    display: none;
+}
+
+.backdrop {
+    display: none;
+}
+
+.blur {
+    display: none;
+}
+
+.badgeText {
+    position: relative;
+    z-index: 10;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 400;
+}
+
+.badgeIcon {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 300ms ease-in-out;
+}
+
+.badge:hover .badgeIcon {
+    transform: translateX(0.25rem);
+}
+
+/* Heading */
+.heading {
+    color: #ffffff;
+    text-align: center;
+    padding: 0;
+    margin: 0 0 2rem;
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    width: 100%;
+    font-family: var(--font-heading, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+}
+
+.gradient {
+    color: transparent;
+    background: linear-gradient(135deg, #22c55e 0%, #a3e635 50%, #4ade80 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    display: inline-block;
+    font-weight: 700;
+}
+
+/* Description */
+.description {
+    margin-bottom: 3rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 800px;
+    font-weight: 400;
+}
+
+.lineBreak {
+    display: block;
+}
+
+.subDescription {
+    display: block;
+}
+
+/* CTA Wrapper */
+.ctaWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  gap: 1rem;
+  z-index: 50;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+  height: 2.5rem;
+  padding: 0.5rem 1.4rem;
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  color: #020617;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  box-shadow: 0 12px 32px rgba(34, 197, 94, 0.6);
+}
+
+.ctaIcon {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+}
+
+/* Preview Wrapper */
+.previewWrapper {
+    position: relative;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    background: transparent;
+    width: 100%;
+    animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+.gradientGlow {
+    position: absolute;
+    left: 50%;
+    width: 75%;
+    height: 25%;
+    inset: 0;
+    transform: translateX(-50%);
+    filter: blur(5rem);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(217, 70, 239, 0.3));
+    animation: imageGlow 3s ease-in-out infinite alternate;
+}
+
+.previewContainer {
+    margin: -0.5rem;
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    ring: 1px solid rgba(var(--foreground-rgb), 0.2);
+    background-opacity: 0.5;
+    backdrop-filter: blur(24px);
+    position: relative;
+}
+
+.borderBeam {
+    position: absolute;
+    inset: 0;
+    width: 250px;
+    height: 250px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent);
+    animation: borderBeam 12s linear 9s infinite;
+    pointer-events: none;
+}
+
+.previewImage {
+    border-radius: 0.375rem;
+    background: rgba(var(--foreground-rgb), 0.1);
+    ring: 1px solid var(--border);
+    width: 100%;
+    height: auto;
+}
+
+.fadeBottom {
+    position: absolute;
+    bottom: -1rem;
+    inset-inline: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, var(--background), transparent);
+    z-index: 40;
+}
+
+.fadeBottomStrong {
+    position: absolute;
+    bottom: 0;
+    inset-inline: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(to top, var(--background), transparent);
+    z-index: 50;
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+    .container {
+    min-height: 68vh;
+    }
+    .heading {
+        font-size: 4.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .heading {
+        font-size: 5.5rem;
+    }
+
+    .description {
+        font-size: 1.25rem;
+    }
+
+    .heroWrapper {
+        padding: 8rem 3rem 4rem;
+    }
+
+    .previewWrapper {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+
+    .gradientGlow {
+        top: 10%;
+        height: 33.333%;
+    }
+
+    .fadeBottomStrong {
+        bottom: -2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .heading {
+        font-size: 6.5rem;
+    }
+
+    .heroWrapper {
+        padding: 5rem 5rem 6rem;
+    }
+
+    .previewContainer {
+        margin: -1rem;
+        border-radius: 1rem;
+    }
+
+    .previewImage {
+        border-radius: 0.75rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flip {
+    0%, 100% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes imageGlow {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes borderBeam {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(400%);
+    }
+}
