@@ -92,8 +92,9 @@
 }
 
 .logo {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: auto;
+  height: 3.5rem;
+  max-width: 150px;
   display: inline-block;
   object-fit: contain;
 }

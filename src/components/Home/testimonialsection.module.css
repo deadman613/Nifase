@@ -1,15 +1,40 @@
-.section {
+/* .section {
   background: radial-gradient(circle at top, #0f1a14, #000);
   padding: 100px 6%;
   color: #e6e6e6;
+} */
+.section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: #000000;
+  overflow: hidden;
+  padding: 5px 6%;
 }
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* HEADINGS */
+/* HEADER / HEADINGS */
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
 
 .heading {
   font-size: 42px;
@@ -20,6 +45,13 @@
 
 .heading span {
   color: #7cff00;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #7cff00, #9dff3a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .subheading {
@@ -34,7 +66,7 @@
   font-size: 15px;
   line-height: 1.7;
   color: #b5b5b5;
-  margin-bottom: 48px;
+  margin: 0 auto;
 }
 
 /* GRID */
@@ -52,15 +84,24 @@
   border: 1px solid rgba(124, 255, 0, 0.15);
   border-radius: 18px;
   padding: 28px 30px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .card:hover {
   border-color: rgba(124, 255, 0, 0.4);
   box-shadow: 0 0 28px rgba(124, 255, 0, 0.12);
+  transform: translateY(-4px);
 }
 
-/* TEXT */
+/* ICON + TEXT */
+
+.quoteIcon {
+  width: 32px;
+  height: 32px;
+  color: rgba(124, 255, 0, 0.45);
+  margin-bottom: 14px;
+}
 
 .quote {
   font-family: var(
@@ -76,17 +117,53 @@
   margin-bottom: 22px;
 }
 
-/* AUTHOR */
+/* AUTHOR BLOCK */
 
-.author {
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 0 0, #7cff00, #1a2b1f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(124, 255, 0, 0.3);
+}
+
+.avatarInitial {
+  font-size: 16px;
+  font-weight: 700;
+  color: #020814;
+}
+
+.authorName {
   font-size: 14px;
   font-weight: 600;
   color: #eaffd8;
 }
 
-.author span {
-  font-weight: 400;
+.authorRole {
+  font-size: 13px;
   color: #9da39f;
+}
+
+/* soft glow behind cards */
+.glow {
+  position: absolute;
+  bottom: -140px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(124, 255, 0, 0.2), transparent 70%);
+  filter: blur(40px);
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 /* RESPONSIVE */

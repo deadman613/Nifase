@@ -1,7 +1,7 @@
 .section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   /* background:
     radial-gradient(circle at 50% 50%, #020617 0%, #020617 55%, #000000 100%); */
     background: #000000;

@@ -207,10 +207,10 @@ const Footer = () => {
           <div className={styles.logoSection}>
             <div className={styles.logoWrapper}>
               <Image
-                src="/uploads/footerlogo.png"
-                alt="nifase"
-                width={28}
-                height={28}
+                src="/NIFASE_Logo-removebg-preview.png"
+                alt="NIFASE Logo"
+                width={120}
+                height={120}
                 className={styles.logo}
                 priority={true}
               />

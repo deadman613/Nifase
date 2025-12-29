@@ -49,7 +49,7 @@ const HeroSection3 = () => {
         opacity: 0,
       });
 
-      // Fxology left heading
+      // NIFASE left heading
       gsap.from(fxLeft, {
         scrollTrigger: {
           trigger: fxSection,
@@ -61,7 +61,7 @@ const HeroSection3 = () => {
         opacity: 0,
       });
 
-      // Fxology right card
+      // NIFASE right card
       gsap.from(fxRight, {
         scrollTrigger: {
           trigger: fxSection,
@@ -106,19 +106,19 @@ const HeroSection3 = () => {
         <div ref={text2Ref} className={styles.scrollingContainer}>
           <div className={`${styles.scrollingText} ${styles.reverse}`}>
             <span className={styles.textItem}>
-              <span className={styles.highlight}>Zero</span> Risk •{" "}
-              <span className={styles.highlight}>Maximum</span> Profit •{" "}
-              <span className={styles.highlight}>Unlimited</span> Potential •
+              <span className={styles.highlight}>Master</span> NSE •{" "}
+              <span className={styles.highlight}>Real</span> Skills •{" "}
+              <span className={styles.highlight}>Proven</span> Results •
             </span>
             <span className={styles.textItem}>
-              <span className={styles.highlight}>Zero</span> Risk •{" "}
-              <span className={styles.highlight}>Maximum</span> Profit •{" "}
-              <span className={styles.highlight}>Unlimited</span> Potential •
+              <span className={styles.highlight}>Master</span> NSE •{" "}
+              <span className={styles.highlight}>Real</span> Skills •{" "}
+              <span className={styles.highlight}>Proven</span> Results •
             </span>
             <span className={styles.textItem}>
-              <span className={styles.highlight}>Zero</span> Risk •{" "}
-              <span className={styles.highlight}>Maximum</span> Profit •{" "}
-              <span className={styles.highlight}>Unlimited</span> Potential •
+              <span className={styles.highlight}>Master</span> NSE •{" "}
+              <span className={styles.highlight}>Real</span> Skills •{" "}
+              <span className={styles.highlight}>Proven</span> Results •
             </span>
           </div>
         </div>
@@ -131,42 +131,40 @@ const HeroSection3 = () => {
             <span className={styles.gradientText}>Trading Journey</span>
           </h2>
           <p className={styles.subtitle}>
-            Join thousands of successful traders worldwide
+            Join thousands of successful NSE traders at NIFASE
           </p>
         </div>
       </div>
 
-      {/* Fxology-style block BELOW scrolling text */}
+      {/* ✅ NIFASE NSE Institute Block */}
       <section ref={fxSectionRef} className={styles.fxologySection}>
         <div className={styles.fxGlowBg} />
 
         <div className={styles.fxInner}>
           <div ref={fxLeftRef} className={styles.fxLeft}>
             <h2 className={styles.fxMainTitle}>
-              Our Capital
+              NIFASE
               <br />
-              <span className={styles.fxEmphasis}>Your Success</span>
+              <span className={styles.fxEmphasis}>Expert Guidance</span>
             </h2>
           </div>
 
           <div ref={fxRightRef} className={styles.fxRight}>
-            <button className={styles.fxPillBtn}>What is Fxology?</button>
+            <button className={styles.fxPillBtn}>What is NIFASE?</button>
 
             <h3 className={styles.fxRightTitle}>
-              Trade on Forex and other
+              Master NSE Trading
               <br />
-              markets with capital
+              with Professional
               <br />
-              up to <span className={styles.fxAccent}>640,000 USD!</span>
+              <span className={styles.fxAccent}>Training Programs</span>
             </h3>
 
             <p className={styles.fxRightText}>
-              We provide unique trading programs for Forex traders, based upon
-              which we search for the best options to work together with.
+              NIFASE provides structured NSE trading education with hands-on practice, live market analysis, and expert mentorship for aspiring traders.
             </p>
             <p className={styles.fxRightTextMuted}>
-              We provide you with training accounts that you can use to trade
-              and earn commission without the risk of losing your own funds.
+              "Practice trading with demo accounts to build skills without financial risk."
             </p>
           </div>
         </div>

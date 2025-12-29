@@ -1,17 +1,34 @@
 .section {
-  background: radial-gradient(circle at top, #0f1a14, #000);
-  padding: 100px 6%;
-  color: #e6e6e6;
+  position: relative;
+  /* min-height: 100vh; */
+  width: 100%;
+  background: #000000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
 }
 
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
 .container {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 80px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* LEFT SIDE */
-
 .heading {
   font-size: 44px;
   font-weight: 700;
@@ -20,19 +37,22 @@
 }
 
 .heading span {
-  color: #7cff00;
+     background: linear-gradient(135deg, #22c55e 0%, #a3e635 50%, #4ade80 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  ;
 }
 
 .subheading {
   font-size: 18px;
-  color: #7cff00;
+  color: #15ff00;
   margin-bottom: 32px;
 }
 
 /* LIST */
-
 .list {
-  position: relative; /* ✅ owns stacking context */
+  position: relative;
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -45,23 +65,15 @@
 .list li {
   position: relative;
   background: linear-gradient(180deg, #0c140f, #060a07);
-  border: 1px solid rgba(124, 255, 0, 0.14);
+  border: 1px solid rgba(47, 255, 0, 0.14);
   border-radius: 14px;
   padding: 22px 24px;
   cursor: pointer;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, margin-top 0.3s ease;
 }
 
-/* TITLE */
-
 .cardTitle {
-  font-family: var(
-    --font-heading,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif
-  );
+  font-family: var(--font-heading, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
   font-size: 15px;
   font-weight: 600;
   color: #eaffd8;
@@ -69,57 +81,43 @@
 }
 
 /* PREVIEW CARD */
-
 .preview {
   position: absolute;
   left: calc(100% + 16px);
   top: 50%;
   transform: translateY(-50%) translateX(-6px);
   width: 280px;
-
   background: linear-gradient(180deg, #0f1c14, #070c09);
   border: 1px solid rgba(124, 255, 0, 0.25);
   border-radius: 14px;
   padding: 18px 20px;
-
-  font-family: var(
-    --font-heading,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif
-  );
+  font-family: var(--font-heading, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
   font-size: 13.5px;
   line-height: 1.6;
   color: #b5b5b5;
-
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-
-  z-index: 20; /* ✅ always on top */
+  z-index: 20;
 }
 
-/* HOVER FIX (NO TRANSFORM) */
-
+/* HOVER EFFECTS - LEFT SIDE */
 .list li:hover {
   border-color: rgba(124, 255, 0, 0.45);
   box-shadow: 0 0 20px rgba(124, 255, 0, 0.12);
-  margin-top: -6px; /* ✅ visual lift without stacking bug */
+  margin-top: -6px;
   z-index: 5;
 }
 
 .list li:hover .cardTitle {
-  color: #7cff00;
+  color: #1aff00;
 }
 
 .list li:hover .preview {
   opacity: 1;
   transform: translateY(-50%) translateX(0);
 }
-
-/* ACCENT LINE */
 
 .list li::before {
   content: "";
@@ -128,7 +126,7 @@
   top: 0;
   width: 3px;
   height: 100%;
-  background: linear-gradient(180deg, #7cff00, transparent);
+  background: linear-gradient(180deg, #11ff00, transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -138,18 +136,24 @@
 }
 
 /* RIGHT SIDE */
-
 .right {
   background: linear-gradient(180deg, #0d160f, #050805);
   border: 1px solid rgba(124, 255, 0, 0.15);
   border-radius: 18px;
   padding: 40px;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
 }
 
 .rightTitle {
   font-size: 22px;
-  color: #7cff00;
+  background: linear-gradient(135deg, #22c55e 0%, #a3e635 50%, #4ade80 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   margin-bottom: 28px;
+  font-weight: 700;
 }
 
 .companyGrid {
@@ -159,29 +163,91 @@
 }
 
 .companyCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: rgba(124, 255, 0, 0.06);
   border: 1px solid rgba(124, 255, 0, 0.2);
   border-radius: 12px;
-  padding: 14px 18px;
-  font-size: 14px;
-  text-align: center;
-  color: #eaffd8;
-  transition: all 0.3s ease;
+  padding: 16px 20px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .companyCard:hover {
-  background: rgba(124, 255, 0, 0.15);
-  transform: translateY(-4px);
+  background: rgba(26, 255, 0, 0.353);
+  border-color: rgba(124, 255, 0, 0.5);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(124, 255, 0, 0.25);
+}
+
+/* SVG LOGOS ON LEFT */
+.logoContainer {
+  flex-shrink: 0;
+}
+
+.svgLogo {
+  width: 32px;
+  height: 28px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.companyCard:hover .svgLogo {
+  transform: scale(1.3) rotate(8deg);
+  filter: drop-shadow(0 0 12px rgba(124, 255, 0, 0.9)) brightness(1.4);
+}
+
+.companyName {
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #eaffd8;
+  flex: 1;
 }
 
 /* RESPONSIVE */
-
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
   }
-
   .preview {
     display: none;
+  }
+  .right {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .companyGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .svgLogo {
+    width: 28px;
+    height: 24px;
+  }
+  
+  .companyCard {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 80px 4%;
+  }
+  
+  .companyGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 }
