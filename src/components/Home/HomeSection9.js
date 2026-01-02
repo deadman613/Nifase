@@ -10,7 +10,7 @@ const HomeSection9 = () => {
   const [timeRange, setTimeRange] = useState('90');
   const [allChartData, setAllChartData] = useState({});
   const [hoveredPoint, setHoveredPoint] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(null);
 
@@ -30,76 +30,74 @@ const HomeSection9 = () => {
     { value: '90', label: '3M' }
   ];
 
-  // ✅ FIXED: Realistic live-like data (no CORS issues)
-  const generateLiveLikeData = (symbol) => {
-    const now = Date.now();
-    const days = parseInt(timeRange);
-    const pointsPerDay = timeRange === '1' ? 24 : 1;
-    const totalPoints = days * pointsPerDay;
-    const data = [];
-
-    const basePrices = {
-      'RELIANCE': 2950.25, 'TCS': 4205.80, 'HDFCBANK': 1752.10,
-      'INFY': 1852.75, 'ICICIBANK': 1258.40, 'SBIN': 852.30
-    };
-
-    const basePrice = basePrices[symbol] || 1000;
-    const volatility = basePrice * 0.015;
-
-    let currentClose = basePrice;
-    for (let i = 0; i < totalPoints; i++) {
-      const interval = timeRange === '1' ? 3600000 : 86400000;
-      const timestamp = now - (totalPoints - i) * interval;
-
-      const openPrice = currentClose;
-      const change = (Math.random() - 0.5) * volatility * 2;
-      const closePrice = Math.max(openPrice + change, basePrice * 0.85);
-
-      const high = Math.max(openPrice, closePrice) + Math.random() * volatility * 0.5;
-      const low = Math.min(openPrice, closePrice) - Math.random() * volatility * 0.5;
-
-      data.push({
-        timestamp,
-        open: parseFloat(openPrice.toFixed(2)),
-        high: parseFloat(high.toFixed(2)),
-        low: parseFloat(low.toFixed(2)),
-        close: parseFloat(closePrice.toFixed(2)),
-        volume: Math.floor(Math.random() * 5000000 + 1000000)
-      });
-
-      currentClose = closePrice;
-    }
-
-    return {
-      data,
-      name: stocks.find(s => s.symbol === symbol)?.name || symbol,
-      updated: new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })
-    };
-  };
-
-  // Load data (simulates live refresh)
   useEffect(() => {
-    setLoading(true);
-    
-    const chartDataMap = {};
-    stocks.forEach(stock => {
-      chartDataMap[stock.symbol] = generateLiveLikeData(stock.symbol);
-    });
+    let isMounted = true;
+    const controller = new AbortController();
 
-    setAllChartData(chartDataMap);
-    setLastUpdate(new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }));
-    setLoading(false);
+    const toNumber = (value) => {
+      const num = typeof value === 'number' ? value : Number(String(value ?? '').replace(/,/g, ''));
+      return Number.isFinite(num) ? num : 0;
+    };
 
-    // Simulate live refresh every 30 seconds
-    const interval = setInterval(() => {
-      Object.keys(chartDataMap).forEach(symbol => {
-        chartDataMap[symbol] = generateLiveLikeData(symbol);
-      });
-      setAllChartData({ ...chartDataMap });
-      setLastUpdate(new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }));
-    }, 30000);
+    const fetchChartData = async () => {
+      try {
+        const symbols = stocks.map((s) => s.symbol).join(',');
+        const response = await fetch(`/api/market?candles=1&chartSymbols=${encodeURIComponent(symbols)}&range=${encodeURIComponent(timeRange)}`,
+          { cache: 'no-store', signal: controller.signal }
+        );
+        if (!response.ok) return;
 
-    return () => clearInterval(interval);
+        const payload = await response.json().catch(() => null);
+        if (!payload || !isMounted) return;
+
+        const candles = payload?.candles && typeof payload.candles === 'object' ? payload.candles : {};
+        const chartDataMap = {};
+
+        stocks.forEach((stock) => {
+          const rows = Array.isArray(candles?.[stock.symbol]) ? candles[stock.symbol] : [];
+          const data = rows
+            .map((c) => ({
+              timestamp: toNumber(c?.timestamp),
+              open: toNumber(c?.open),
+              high: toNumber(c?.high),
+              low: toNumber(c?.low),
+              close: toNumber(c?.close),
+              volume: toNumber(c?.volume),
+            }))
+            .filter((c) => c.timestamp && (c.open || c.high || c.low || c.close));
+
+          if (data.length) {
+            chartDataMap[stock.symbol] = {
+              data,
+              name: stock.name,
+            };
+          }
+        });
+
+        // Silent background update: only overwrite if we got some real data.
+        if (Object.keys(chartDataMap).length) {
+          setAllChartData(chartDataMap);
+          if (!chartDataMap[selectedStock]) {
+            const firstAvailable = Object.keys(chartDataMap)[0];
+            if (firstAvailable) setSelectedStock(firstAvailable);
+          }
+          const updated = payload?.lastUpdated ? new Date(payload.lastUpdated) : new Date();
+          setLastUpdate(updated.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }));
+        }
+      } catch {
+        // Silent fail
+      }
+    };
+
+    // No visible loading; fetch silently.
+    fetchChartData();
+    const interval = setInterval(fetchChartData, 30000);
+
+    return () => {
+      isMounted = false;
+      controller.abort();
+      clearInterval(interval);
+    };
   }, [timeRange]);
 
   // Intersection Observer
@@ -121,7 +119,10 @@ const HomeSection9 = () => {
 
   // Draw chart
   useEffect(() => {
-    if (!allChartData[selectedStock] || !canvasRef.current || loading) return;
+    if (!allChartData[selectedStock] || !canvasRef.current) return;
+
+    const chartData = allChartData[selectedStock]?.data;
+    if (!Array.isArray(chartData) || chartData.length < 2) return;
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -138,7 +139,7 @@ const HomeSection9 = () => {
     const candleStartX = 100;
     const padding = { top: 40, right: 60, bottom: 60, left: yAxisWidth };
 
-    const chartData = allChartData[selectedStock].data;
+    
     const allPrices = chartData.flatMap(d => [d.high, d.low]);
     const minPrice = Math.min(...allPrices);
     const maxPrice = Math.max(...allPrices);
@@ -290,7 +291,7 @@ const HomeSection9 = () => {
   }, [allChartData, selectedStock, loading, hoveredPoint, timeRange]);
 
   const handleMouseMove = (e) => {
-    if (!allChartData[selectedStock] || loading) return;
+    if (!allChartData[selectedStock]) return;
     const rect = canvasRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const candleStartX = 100;
@@ -304,6 +305,7 @@ const HomeSection9 = () => {
     }
 
     const chartData = allChartData[selectedStock].data;
+    if (!Array.isArray(chartData) || chartData.length < 2) return;
     const index = Math.round((relativeX / chartWidth) * (chartData.length - 1));
     if (chartData[index]) setHoveredPoint({ index });
   };
@@ -372,7 +374,7 @@ const HomeSection9 = () => {
             </div>
           )}
 
-          {!loading && (
+          {(
             <div className={styles.priceInfo}>
               <div>
                 <div className={styles.stockLabel}>
@@ -395,17 +397,10 @@ const HomeSection9 = () => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            {loading ? (
-              <div className={styles.loadingContainer}>
-                <div className={styles.spinner}></div>
-                <p className={styles.loadingText}>Loading live chart data...</p>
-              </div>
-            ) : (
-              <canvas ref={canvasRef} className={styles.canvas} />
-            )}
+            <canvas ref={canvasRef} className={styles.canvas} />
           </div>
 
-          {!loading && allChartData[selectedStock] && (
+          {allChartData[selectedStock] && (
             <div className={styles.chartFooter}>
               <div className={styles.footerItem}>
                 <span className={styles.footerLabel}>High</span>

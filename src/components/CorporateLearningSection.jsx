@@ -195,9 +195,7 @@ export default function NewSection() {
               }
             ].map(({ name, svg }, index) => (
               <div key={index} className={styles.companyCard}>
-                <div className={styles.logoContainer}>
-                  {svg}
-                </div>
+                <div className={styles.logoContainer}></div>
                 <span className={styles.companyName}>{name}</span>
               </div>
             ))}
