@@ -1,0 +1,211 @@
+.section {
+	position: relative;
+	width: 100%;
+	background: hsl(var(--background));
+	color: hsl(var(--foreground));
+	padding: 3.5rem 1.25rem;
+	overflow: hidden;
+}
+
+.section::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+		linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
+	background-size: 60px 60px;
+	pointer-events: none;
+}
+
+.inner {
+	position: relative;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.headerRow {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 1.25rem;
+}
+
+.heading {
+	font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	margin: 0;
+}
+
+.meta {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.4rem 0.75rem;
+	border-radius: 999px;
+	border: 1px solid hsl(var(--border) / 0.75);
+	background: hsl(var(--card) / 0.55);
+	backdrop-filter: blur(10px);
+}
+
+.metaText {
+	font-size: 0.8rem;
+	color: hsl(var(--muted-foreground));
+	white-space: nowrap;
+}
+
+.group {
+	margin-top: 1.25rem;
+}
+
+.subheading {
+	margin: 0 0 0.75rem;
+	font-size: 1.1rem;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+}
+
+.emptyState {
+	margin: 0 0 0.75rem;
+	font-size: 0.85rem;
+	color: hsl(var(--muted-foreground));
+}
+
+.liveDot {
+	width: 0.55rem;
+	height: 0.55rem;
+	border-radius: 999px;
+	background: hsl(var(--primary));
+	box-shadow: 0 0 14px hsl(var(--primary) / 0.75);
+}
+
+.gridCommodity,
+.gridCrypto {
+	display: grid;
+	gap: 1rem;
+}
+
+.gridCommodity {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gridCrypto {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card {
+	border-radius: 1rem;
+	border: 1px solid hsl(var(--border) / 0.75);
+	background:
+		radial-gradient(circle at 0 0, hsl(var(--primary) / 0.12), transparent 55%),
+		hsl(var(--card) / 0.85);
+	padding: 1rem;
+}
+
+.cardTop {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 0.75rem;
+	margin-bottom: 0.75rem;
+}
+
+.assetName {
+	font-size: 1rem;
+	font-weight: 700;
+	color: hsl(var(--foreground));
+}
+
+.assetSymbol {
+	font-size: 0.75rem;
+	color: hsl(var(--muted-foreground));
+}
+
+.badge {
+	font-size: 0.75rem;
+	font-weight: 700;
+	padding: 0.35rem 0.6rem;
+	border-radius: 999px;
+	border: 1px solid hsl(var(--border) / 0.65);
+	color: hsl(var(--foreground));
+}
+
+.badgeUp {
+	background: hsl(var(--primary) / 0.12);
+}
+
+.badgeDown {
+	background: hsl(var(--destructive) / 0.12);
+}
+
+.badgeNeutral {
+	background: hsl(var(--muted) / 0.35);
+}
+
+.priceRow {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.75rem;
+}
+
+.price {
+	font-size: 1.35rem;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+}
+
+.changeLine {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+.change {
+	font-size: 0.9rem;
+	font-weight: 700;
+}
+
+.up {
+	color: hsl(var(--primary));
+}
+
+.down {
+	color: hsl(var(--destructive));
+}
+
+.neutral {
+	color: hsl(var(--muted-foreground));
+}
+
+@media (max-width: 1024px) {
+	.gridCommodity {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.gridCrypto {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 640px) {
+	.section {
+		padding: 2.5rem 1rem;
+	}
+
+	.headerRow {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.gridCommodity,
+	.gridCrypto {
+		grid-template-columns: 1fr;
+	}
+
+	.price {
+		font-size: 1.25rem;
+	}
+}

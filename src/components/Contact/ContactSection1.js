@@ -237,8 +237,8 @@ const ContactSection1 = () => {
                                 </svg>
                             </div>
                             <h3 className={styles.infoTitle}>Call Us</h3>
-                            <p className={styles.infoText}>+1 (555) 123-4567</p>
-                            <p className={styles.infoText}>Mon-Sat 10am-6pm EST</p>
+                            <p className={styles.infoText}>+91 (555) 123-4567</p>
+                            <p className={styles.infoText}>Mon-Sat 10am-6pm IST</p>
                         </div>
 
                         {/* Location Card */}
@@ -266,20 +266,138 @@ const ContactSection1 = () => {
                             ref={el => infoCardsRef.current[3] = el}
                             className={styles.infoCard}
                         >
-                            <div className={styles.iconWrapper}>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M17 2H7a5 5 0 00-5 5v10a5 5 0 005 5h10a5 5 0 005-5V7a5 5 0 00-5-5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                            </div>
+                            
                             <h3 className={styles.infoTitle}>Follow Us</h3>
                             <div className={styles.socialLinks}>
-                                <a href="#" className={styles.socialLink}>Facebook</a>
-                                <a href="#" className={styles.socialLink}>LinkedIn</a>
-                                <a target='blank' href="https://www.instagram.com/nifase_01/" className={styles.socialLink}>Instagram</a>
+                                <a
+                                    href="#"
+                                    className={styles.socialLink}
+                                    aria-label="Facebook"
+                                    title="Facebook"
+                                >
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path
+                                            d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="#"
+                                    className={styles.socialLink}
+                                    aria-label="LinkedIn"
+                                    title="LinkedIn"
+                                >
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path
+                                            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <rect
+                                            x="2"
+                                            y="9"
+                                            width="4"
+                                            height="12"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <circle
+                                            cx="4"
+                                            cy="4"
+                                            r="2"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="https://www.instagram.com/nifase_01/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.socialLink}
+                                    aria-label="Instagram"
+                                    title="Instagram"
+                                >
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <rect
+                                            x="3"
+                                            y="3"
+                                            width="18"
+                                            height="18"
+                                            rx="5"
+                                            ry="5"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M17.5 6.5h.01"
+                                            stroke="currentColor"
+                                            strokeWidth="3"
+                                            strokeLinecap="round"
+                                        />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="https://wa.me/915551234567"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.socialLink}
+                                    aria-label="WhatsApp"
+                                    title="WhatsApp"
+                                >
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                        <path
+                                            d="M12 3.5a8.5 8.5 0 00-7.3 12.9L4 21l4.8-1.3A8.5 8.5 0 1012 3.5z"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M9 9.2c.2-.5.6-.7 1.1-.7h.6c.4 0 .8.2 1 .6l.8 1.8c.2.4.1.9-.2 1.2l-.8.8c.6 1.1 1.5 2 2.6 2.6l.8-.8c.3-.3.8-.4 1.2-.2l1.8.8c.4.2.6.6.6 1v.6c0 .5-.2.9-.7 1.1-.8.3-1.8.3-2.6 0-1.7-.6-3.2-1.6-4.5-2.9-1.3-1.3-2.3-2.8-2.9-4.5-.3-.8-.3-1.8 0-2.6z"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            {/* Full-width Map */}
+            <div className={styles.mapBleed}>
+                <div className={styles.mapShell}>
+                    <iframe
+                        className={styles.mapFrame}
+                        title="National Institute of Finance and Stock Education"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q=28.5415141,77.240201&z=17&output=embed"
+                        allowFullScreen
+                    />
                 </div>
             </div>
         </div>

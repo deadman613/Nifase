@@ -10,6 +10,7 @@ import HomeSection3 from "@/components/Home/HomeSection3";
 import Link from "next/link";
 import HomeSection4 from "../components/Home/HomeSection4";
 import HomeSection5 from "../components/Home/HomeSection5";
+import Commodity from "@/components/Home/Commodity";
 import HomeSection6 from "@/components/Home/HomeSection6";
 import HomeSection7 from "@/components/Home/HomeSection7";
 import HomeSection8 from "@/components/Home/HomeSection8";
@@ -19,6 +20,7 @@ import TestimonialSection from "@/components/Home/testimonimals";
 import WhoCanLearn from "@/components/Home/whocanlearn";
 import CoursesSection from "@/components/Home/CoursesSection";
 import BookMeeting from "@/components/BookMeeting";
+import CompanyCarouselSection from "@/components/Home/CompanyCarouselSection";
 export default function Home() {
   const [loading, setLoading] = useState(true);
 
@@ -32,19 +34,21 @@ export default function Home() {
       {loading && <StockLoader />}
       <main style={{ filter: loading ? 'blur(2px)' : 'none', pointerEvents: loading ? 'none' : 'auto' }}>
         <HomeSection1 />
-        <HomeSection2 />
+        {/* <HomeSection2 /> */}
+        <CompanyCarouselSection />
         <CorporateLearningSection />
         <NewgallerySection/>
         <TestimonialSection/>
         <CoursesSection/>
+        <WhoCanLearn/>
         <HomeSection3 />
         <HomeSection4 />
-        <WhoCanLearn/>
         <HomeSection5 />
         <HomeSection6 />
         <HomeSection7 />
         <HomeSection8 />
         <HomeSection9 />
+        <Commodity />
         <BookMeeting/>
       </main>
     </>

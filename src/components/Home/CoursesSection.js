@@ -2,6 +2,7 @@ import styles from "./coursessection.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import courses from "@/data/courses.json";
+import { Star } from "lucide-react";
 
 export default function CoursesSection() {
   const coursesToShow = courses.slice(0, 6);
@@ -29,6 +30,12 @@ export default function CoursesSection() {
               if (highlights.length >= 3) break;
             }
 
+            const rating = Number(course.rating ?? 0);
+            const reviewCount = Number(course.reviewCount ?? 0);
+            const formattedReviewCount = reviewCount
+              ? `(${reviewCount.toLocaleString()} ratings)`
+              : "";
+
             return (
               <article key={course.id} className={styles.card}>
                 <div className={styles.imageWrap}>
@@ -55,6 +62,20 @@ export default function CoursesSection() {
                     <span className={styles.badge}>{course.level}</span>
                     <span className={styles.badge}>{course.duration}</span>
                   </div>
+
+                  {rating > 0 && (
+                    <div className={styles.ratingRow} aria-label="Course rating">
+                      <Star className={styles.starIcon} aria-hidden="true" />
+                      <span className={styles.ratingValue}>
+                        {Number.isFinite(rating) ? rating.toFixed(1) : ""}
+                      </span>
+                      {formattedReviewCount && (
+                        <span className={styles.ratingCount}>
+                          {formattedReviewCount}
+                        </span>
+                      )}
+                    </div>
+                  )}
 
                   <div className={styles.meta}>{course.category}</div>
                   <h3 className={styles.courseTitle}>{course.title}</h3>

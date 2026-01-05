@@ -80,7 +80,7 @@ const HomeSection1 = ({ user }) => {
             <Button
               type="button"
               size="lg"
-              className="glow-primary"
+              className={`glow-primary ${styles.ctaButtonPrimary}`}
               onClick={() => setLeadOpen(true)}
             >
               Get Started

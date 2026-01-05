@@ -276,7 +276,7 @@
   padding: 0.5rem 1.2rem;
   font-size: 0.95rem;
   color: hsl(var(--primary-foreground));
-  background: hsl(var(--primary));
+  background: var(--gradient-primary) !important;
   border-radius: 999px;
   text-decoration: none;
   transition: all 0.2s;
@@ -286,7 +286,7 @@
 }
 
 .getStartedBtn:hover {
-  background: hsl(var(--accent));
+  background: var(--gradient-primary) !important;
   color: hsl(var(--primary-foreground));
   transform: translateY(-1px);
   box-shadow: 0 8px 24px hsl(var(--accent) / 0.28);
@@ -405,7 +405,7 @@
   font-size: 0.95rem;
   font-weight: 700;
   color: hsl(var(--primary-foreground));
-  background: hsl(var(--accent));
+  background: var(--gradient-primary) !important;
   border: none;
   border-radius: 999px;
   text-decoration: none;
@@ -415,7 +415,7 @@
 }
 
 .mobileGetStartedBtn:hover {
-  background: hsl(var(--primary));
+  background: var(--gradient-primary) !important;
   color: hsl(var(--primary-foreground));
 }
 

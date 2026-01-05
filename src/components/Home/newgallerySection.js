@@ -81,6 +81,14 @@ export default function GallerySection() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
+        <div className={styles.topHeading}>
+          <h2 className={styles.heading}>
+            Experience Learning in a
+            <br />
+            <span>Professional Campus</span>
+          </h2>
+        </div>
+
         {/* LEFT — GALLERY (3x3 with Labels) */}
         <div className={styles.galleryBlock}>
           <div className={`${styles.gallery} ${!isExpanded ? styles.galleryCollapsed : ""}`}>
@@ -113,10 +121,6 @@ export default function GallerySection() {
 
         {/* RIGHT — ENHANCED CONTENT */}
         <div className={styles.content}>
-          <h2 className={styles.heading}>
-            Experience Learning in a <span>Professional Campus</span>
-          </h2>
-
           <p className={styles.description}>
             Our NIFASE campus reflects a real corporate trading environment — focused, distraction-free, and performance-driven with state-of-the-art facilities.
           </p>
@@ -158,6 +162,59 @@ export default function GallerySection() {
           <button className={styles.ctaButton}>
             Book Campus Tour
           </button>
+
+          <div className={styles.logoRow} aria-label="Social links">
+            <a
+              className={styles.socialLink}
+              href="https://www.whatsapp.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+            >
+              <img
+                className={styles.smallLogo}
+                src="https://cdn.simpleicons.org/whatsapp"
+                alt="WhatsApp"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
+            </a>
+
+            <a
+              className={styles.socialLink}
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+            >
+              <img
+                className={styles.smallLogo}
+                src="https://cdn.simpleicons.org/facebook"
+                alt="Facebook"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
+            </a>
+
+            <a
+              className={styles.socialLink}
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <img
+                className={styles.smallLogo}
+                src="https://cdn.simpleicons.org/instagram"
+                alt="Instagram"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </section>

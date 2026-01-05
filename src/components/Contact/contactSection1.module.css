@@ -113,6 +113,33 @@
     align-items: start;
 }
 
+/* Full-width Map */
+.mapBleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-top: 5rem;
+    padding: 0 2rem;
+}
+
+.mapShell {
+    max-width: 1350px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.mapFrame {
+    width: 100%;
+    height: 420px;
+    border: 0;
+    display: block;
+    filter: grayscale(1) invert(0.92) hue-rotate(180deg) contrast(1.1) brightness(0.9);
+}
+
 /* Form Container */
 .formContainer {
     background: rgba(255, 255, 255, 0.02);
@@ -225,7 +252,10 @@
     cursor: pointer;
     text-decoration: none;
     color: inherit;
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 1.25rem;
+    align-items: start;
 }
 
 .infoCard:hover {
@@ -244,12 +274,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.25rem;
+    grid-column: 2;
+    grid-row: 1 / span 10;
+    justify-self: end;
+    margin-bottom: 0;
     transition: all 0.3s ease;
 }
 
 .iconWrapper svg {
     color: #22c55e;
+    width: 24px;
+    height: 24px;
+    display: block;
 }
 
 .infoCard:hover .iconWrapper {
@@ -279,30 +315,30 @@
 }
 
 .socialLink {
-    font-size: 0.95rem;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: #22c55e;
     text-decoration: none;
+    border-radius: 0.75rem;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.22);
     transition: all 0.3s ease;
-    position: relative;
-}
-
-.socialLink::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: #22c55e;
-    transition: width 0.3s ease;
 }
 
 .socialLink:hover {
     color: #16a34a;
+    background: rgba(34, 197, 94, 0.14);
+    border-color: rgba(34, 197, 94, 0.35);
+    transform: translateY(-1px);
 }
 
-.socialLink:hover::after {
-    width: 100%;
+.socialLink svg {
+    width: 20px;
+    height: 20px;
+    display: block;
 }
 
 /* Responsive Design */
@@ -346,6 +382,15 @@
         gap: 2rem;
     }
 
+    .mapBleed {
+        margin-top: 3.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .mapFrame {
+        height: 340px;
+    }
+
     .infoCard {
         padding: 1.5rem;
     }
@@ -367,6 +412,14 @@
     .iconWrapper {
         width: 40px;
         height: 40px;
+    }
+
+    .mapBleed {
+        padding: 0 1rem;
+    }
+
+    .mapFrame {
+        height: 300px;
     }
 }
 

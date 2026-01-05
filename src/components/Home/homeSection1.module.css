@@ -248,8 +248,8 @@
     border-radius: 999px;
     font-size: 1.125rem;
     font-weight: 600;
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
-
+    background: var(--gradient-primary) !important;
+    
     color: hsl(var(--primary-foreground));
     text-decoration: none;
     transition: all 0.3s ease;
@@ -257,7 +257,9 @@
 }
 
 .ctaButtonPrimary:hover {
-    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 50%, hsl(var(--accent)) 100%);
+    border: 2px solid white;
+    background: var(--gradient-primary) !important;
+    
 
     transform: scale(1.05);
     box-shadow: 0 12px 32px hsl(var(--primary) / 0.6);
