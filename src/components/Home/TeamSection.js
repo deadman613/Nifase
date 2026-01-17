@@ -5,7 +5,7 @@ import styles from "./TeamSection.module.css";
 const trainer = {
   role: "Head Trainer • NSE & Derivatives",
   name: "Gaurav Heera",
-  image: "/team/gaurav.png",
+  image: "/instructor.jpeg",
   experience: "8+ years live market experience",
   highlight:
     "Specializes in intraday, index trading, and building rule‑based systems for retail traders.",
