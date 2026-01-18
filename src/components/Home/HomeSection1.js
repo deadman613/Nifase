@@ -12,7 +12,7 @@ import styles from "./homeSection1.module.css";
 const courses = [
   "Technical Analysis",
   "Fundamental Analysis",
-  "Options Trading",
+  "Optional Trading",
   "Equity Research",
   "Portfolio Management",
   "Derivatives",
@@ -27,7 +27,7 @@ const TypewriterText = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   
   const texts = [
-    "Options Trading",
+    "Optional Trading",
     "Crypto Trading",
     "Trading Strategies",
     "Investing",
