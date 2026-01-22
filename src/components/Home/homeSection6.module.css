@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5rem 1.5rem;
+  padding: 8rem 1.5rem;
 }
 
 .section::before {
@@ -55,7 +55,7 @@
 }
 
 .headingTransparent {
-  background: linear-gradient(120deg, hsl(var(--border) / 0.35), hsl(var(--accent) / 0.45));
+  background: linear-gradient(hsl(var(--accent)));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

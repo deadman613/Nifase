@@ -153,7 +153,7 @@ const ContactSection1 = () => {
           </span>
         </p>
 
-        {/* Green animated scroll indicator */}
+        {/* Green animated scroll indicator
         <div
           style={{
             position: "absolute",
@@ -190,7 +190,7 @@ const ContactSection1 = () => {
               strokeLinejoin="round"
             />
           </svg>
-        </div>
+        </div> */}
 
         <div className={`${styles.imageshade}`}></div>
 

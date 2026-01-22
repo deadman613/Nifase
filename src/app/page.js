@@ -3,7 +3,9 @@
 import HomeSection1 from "@/components/Home/HomeSection1";
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-const StockLoader = dynamic(() => import("@/components/Home/StockLoader"), { ssr: false });
+const StockLoader = dynamic(() => import("@/components/Home/StockLoader"), {
+  ssr: false,
+});
 import HomeSection2 from "@/components/Home/HomeSection2";
 import CorporateLearningSection from "@/components/CorporateLearningSection";
 import HomeSection3 from "@/components/Home/HomeSection3";
@@ -35,18 +37,23 @@ export default function Home() {
   return (
     <>
       {loading && <StockLoader />}
-      <main style={{ filter: loading ? 'blur(2px)' : 'none', pointerEvents: loading ? 'none' : 'auto' }}>
+      <main
+        style={{
+          filter: loading ? "blur(2px)" : "none",
+          pointerEvents: loading ? "none" : "auto",
+        }}
+        className="space-y-16" // or space-y-20, space-y-24 — adjust as needed
+      >
         <HomeSection1 />
-        {/* <HomeSection2 /> */}
         <CompanyCarouselSection />
         <WhyJoinSection />
         <TrainingModules />
         <TeamSection />
         <CorporateLearningSection />
-        <NewgallerySection/>
-        <TestimonialSection/>
-        <CoursesSection/>
-        <WhoCanLearn/>
+        <NewgallerySection />
+        <TestimonialSection />
+        <CoursesSection />
+        <WhoCanLearn />
         <HomeSection3 />
         <HomeSection4 />
         <HomeSection5 />
@@ -55,7 +62,7 @@ export default function Home() {
         <HomeSection8 />
         <HomeSection9 />
         <Commodity />
-        <BookMeeting/>
+        <BookMeeting />
       </main>
     </>
   );
