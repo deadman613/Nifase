@@ -32,7 +32,6 @@ export default async function CourseDetailPage({ params }) {
       name: "Brokerage",
       Svg: (props) => (
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      const courseImageSrc = typeof course?.image === "string" ? course.image.replace(/\.png$/i, ".png") : course?.image;
           <path
             d="M4 19V5m0 14h16"
             stroke="currentColor"
@@ -80,7 +79,6 @@ export default async function CourseDetailPage({ params }) {
           />
           <path
             d="M12 2v2m0 18v-2"
-                        src={courseImageSrc}
             strokeWidth="2"
             strokeLinecap="round"
           />

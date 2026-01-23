@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 import { generateUniqueSlug } from "@/lib/slugify";
 import { normalizeTags } from "@/lib/tags";
 import { ensureAdminApi } from "@/lib/auth";
@@ -11,6 +11,7 @@ const MAX_LIMIT = 24;
 
 export async function GET(request) {
   try {
+    const prisma = await getPrisma();
     const { searchParams } = new URL(request.url);
     const page = Number(searchParams.get("page")) || 1;
     const limitParam = Number(searchParams.get("limit")) || DEFAULT_LIMIT;
@@ -91,6 +92,7 @@ export async function GET(request) {
 
 export async function POST(request) {
   try {
+    const prisma = await getPrisma();
     const session = await ensureAdminApi(request);
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

@@ -1,4 +1,4 @@
-import prisma from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 
 const sanitizeMetadata = (metadata) => {
   if (!metadata) {
@@ -14,6 +14,7 @@ const sanitizeMetadata = (metadata) => {
 
 export const recordAudit = async (action, { actor, entity, entityId, ip, metadata } = {}) => {
   try {
+    const prisma = await getPrisma();
     await prisma.adminAudit.create({
       data: {
         action,
