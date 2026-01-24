@@ -57,10 +57,14 @@
 }
 
 .kicker {
-  font-size: 0.8rem;
+  font-size: 3.8rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   margin-bottom: 0.9rem;
 }
 

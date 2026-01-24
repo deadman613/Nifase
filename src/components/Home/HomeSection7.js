@@ -205,8 +205,8 @@ const HomeSection7 = () => {
         <div className={styles.headerCenter}>
           <p className={styles.kicker}>FAQ</p>
           <h2 className={styles.heading}>
-            Answers before
-            <span className={styles.headingAccent}> you even ask.</span>
+            Frequently Asked Questions
+            {/* <span className={styles.headingAccent}> you even ask.</span> */}
           </h2>
           <p className={styles.sub}>
             A quick rundown of how NIFASE works so you can focus on trading,
