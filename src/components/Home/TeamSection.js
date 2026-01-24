@@ -4,7 +4,7 @@ import styles from "./TeamSection.module.css";
 
 const trainer = {
   role: "Head Trainer • NSE & Derivatives",
-  name: "Puneet Narag",
+  name: "Puneet Narang",
   image: "/instructor.webp",
   experience: "20+ years live market experience",
   highlight:

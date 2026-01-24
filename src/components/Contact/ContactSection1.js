@@ -438,7 +438,7 @@ const ContactSection1 = () => {
               <h3 className={styles.infoTitle}>Follow Us</h3>
               <div className={styles.socialLinks}>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/profile.php?id=61586810825429"
                   className={styles.socialLink}
                   aria-label="Facebook"
                   title="Facebook"

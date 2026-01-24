@@ -67,10 +67,30 @@
   background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--background)));
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
+}
+
+/* .imageCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.3),
+    hsl(var(--accent) / 0.3)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+} */
+
+.imageCard:hover {
   border-color: hsl(var(--primary) / 0.6);
-  box-shadow: 
-    0 40px 80px hsl(var(--primary) / 0.25),
-    0 0 50px hsl(var(--primary) / 0.2);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.imageCard:hover::before {
+  opacity: 1;
 }
 
 .imageCard img {
@@ -78,7 +98,12 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: scale(1.1);
+  transform: scale(1);
+  filter: grayscale(0%) contrast(1.1) brightness(1);
+}
+
+.imageCard:hover img {
+  transform: scale(1.15);
   filter: grayscale(0%) contrast(1.2) brightness(1.15);
 }
 
@@ -96,6 +121,15 @@
   opacity: 1;
   transform: translateY(0);
   transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.imageCard:hover .imageLabel {
+  opacity: 1;
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, hsl(var(--background) / 0.95), hsl(var(--background) / 0.85));
+  border-color: hsl(var(--primary) / 0.5);
+  /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); */
 }
 
 .imageLabel span {
@@ -104,7 +138,13 @@
   color: hsl(var(--foreground));
   text-align: center;
   display: block;
+  transition: color 0.3s ease;
 }
+
+.imageCard:hover .imageLabel span {
+  color: hsl(var(--primary));
+}
+
 
 .seeMoreWrap {
   display: none;
@@ -146,7 +186,7 @@
 }
 
 .heading span {
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -221,8 +261,8 @@
 
 /* CTA BUTTON */
 .ctaButton {
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-  color: hsl(var(--primary-foreground));
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
+  color: white;
   border: none;
   padding: 16px 40px;
   border-radius: 50px;

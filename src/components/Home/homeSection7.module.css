@@ -6,21 +6,22 @@
   padding: 5rem 1.75rem 6rem;
   overflow: hidden;
 }
+
 .section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-        linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(hsl(var(--foreground) / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
 }
 
 .bgGlow {
   position: absolute;
-  left: 55%;
-  top: 55%;
+  left: 50%;
+  top: 30%;
   transform: translate(-50%, -50%);
   width: 720px;
   height: 720px;
@@ -43,19 +44,16 @@
 
 .inner {
   position: relative;
-  max-width: 1180px;
+  max-width: 1280px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
-  gap: 3.5rem;
-  align-items: flex-start;
   z-index: 1;
 }
 
-/* left text */
-
-.left {
-  max-width: 420px;
+/* Centered header */
+.headerCenter {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 4rem;
 }
 
 .kicker {
@@ -87,9 +85,14 @@
   color: hsl(var(--muted-foreground));
 }
 
-/* right accordion */
+/* FAQ columns */
+.faqColumns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
 
-.right {
+.faqColumn {
   position: relative;
   border-radius: 1.4rem;
   background: hsl(var(--card) / 0.9);
@@ -137,7 +140,6 @@
 }
 
 /* icon */
-
 .icon {
   width: 26px;
   height: 26px;
@@ -185,7 +187,6 @@
 }
 
 /* body */
-
 .body {
   height: 0;
   overflow: hidden;
@@ -203,19 +204,18 @@
 }
 
 /* responsive */
-
 @media (max-width: 960px) {
   .section {
     padding: 4.5rem 1.5rem 5rem;
   }
 
-  .inner {
+  .faqColumns {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 1.5rem;
   }
 
-  .left {
-    max-width: none;
+  .headerCenter {
+    margin-bottom: 3rem;
   }
 }
 
@@ -224,7 +224,7 @@
     padding: 4rem 1.25rem 4.5rem;
   }
 
-  .right {
+  .faqColumn {
     padding: 1rem;
   }
 
