@@ -74,7 +74,7 @@ export default function FixedFooterReveal({ children }) {
 
               <div className={styles.bottom}>
                 <div className={styles.social} aria-label="Social links">
-                  <a className={styles.iconLink} href="#" aria-label="LinkedIn">
+                  <a className={styles.iconLink} href="#" aria-label="LinkedIn" target=" ">
                     <svg
                       viewBox="0 0 24 24"
                       width="20"
@@ -87,7 +87,7 @@ export default function FixedFooterReveal({ children }) {
                       />
                     </svg>
                   </a>
-                  <a className={styles.iconLink} href="#" aria-label="Instagram">
+                  <a className={styles.iconLink} href="https://www.instagram.com/nifase.official?igsh=ZTJkb2R1aHZ3b3Vn" aria-label="Instagram" target=" ">
                     <svg
                       viewBox="0 0 24 24"
                       width="20"
@@ -100,7 +100,7 @@ export default function FixedFooterReveal({ children }) {
                       />
                     </svg>
                   </a>
-                  <a className={styles.iconLink} href="#" aria-label="YouTube">
+                  <a className={styles.iconLink} href="https://www.youtube.com/@nifase.official" aria-label="YouTube" target=" ">
                     <svg
                       viewBox="0 0 24 24"
                       width="20"
@@ -113,7 +113,7 @@ export default function FixedFooterReveal({ children }) {
                       />
                     </svg>
                   </a>
-                  <a className={styles.iconLink} href="#" aria-label="Facebook">
+                  <a className={styles.iconLink} href="https://www.facebook.com/profile.php?id=61586810825429" aria-label="Facebook" target=" ">
                     <svg
                       viewBox="0 0 24 24"
                       width="20"

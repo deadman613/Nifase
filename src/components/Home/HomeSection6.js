@@ -136,7 +136,7 @@ const HomeSection6 = () => {
       <div className={styles.inner}>
         {/* One line heading */}
         <h2 ref={lineRef} className={styles.headingLine}>
-          Payout <span className={styles.headingTransparent}>Certificate</span>
+           <span className={styles.headingTransparent}>Certificate</span>
         </h2>
 
         {/* Center certificate card */}

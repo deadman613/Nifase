@@ -90,7 +90,7 @@
 .imageWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 21 / 12;
   background: hsl(var(--card));
   border-bottom: 1px solid hsl(var(--border) / 0.5);
   isolation: isolate;
@@ -103,8 +103,9 @@
 
 .popularBadge {
   position: absolute;
-  top: 3rem;
-  left: -2rem;
+  top: 1rem;
+  right: -2rem;
+  left: auto;
   z-index: 5;
   display: inline-flex;
   align-items: center;
@@ -116,19 +117,19 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
-  color: hsl(var(--primary-foreground));
+  color: #000;
   border: 1px solid hsl(var(--primary) / 0.65);
-  /* background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent))); */
   background: rgb(242, 255, 0);
-  transform: rotate(-34deg);
-  transform-origin: left top;
+  
+  transform: rotate(45deg);
+  transform-origin: center center;     
   box-shadow:
     0 0 0 1px hsl(var(--primary) / 0.25),
     0 12px 30px hsl(var(--primary) / 0.35),
     0 0 22px hsl(var(--primary) / 0.45),
     0 0 52px hsl(var(--primary) / 0.22);
-  text-shadow: 0 1px 12px hsl(var(--primary-foreground) / 0.3);
-  overflow: hidden;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
+  overflow: visible;
   pointer-events: none;
 }
 
@@ -323,8 +324,8 @@
   font-size: 0.9rem;
   text-decoration: none;
   border: 1px solid hsl(var(--primary) / 0.5);
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-  color: hsl(var(--primary-foreground));
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
+  color: white;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
@@ -347,12 +348,13 @@
   justify-content: center;
   border-radius: 999px;
   padding: 0.85rem 1.25rem;
-  font-weight: 900;
+  z-index: 4;
+  font-weight: 800;
   font-size: 0.95rem;
   text-decoration: none;
   border: 1px solid hsl(var(--primary) / 0.5);
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-  color: hsl(var(--primary-foreground));
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
+  color: white;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 

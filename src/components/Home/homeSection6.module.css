@@ -55,7 +55,7 @@
 }
 
 .headingTransparent {
-  background: linear-gradient(hsl(var(--accent)));
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
