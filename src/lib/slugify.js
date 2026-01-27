@@ -1,4 +1,4 @@
-import prisma from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 
 export const slugify = (raw = "") => {
   const fallback = "post";
@@ -19,6 +19,7 @@ export const generateUniqueSlug = async (input, excludeId) => {
   let suffix = 1;
 
   while (true) {
+    const prisma = await getPrisma();
     const match = await prisma.blog.findFirst({
       where: {
         slug: candidate,

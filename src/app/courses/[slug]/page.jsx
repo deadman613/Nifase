@@ -79,7 +79,6 @@ export default async function CourseDetailPage({ params }) {
           />
           <path
             d="M12 2v2m0 18v-2"
-            stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
           />

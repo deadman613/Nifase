@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 import { generateUniqueSlug } from "@/lib/slugify";
 import { normalizeTags } from "@/lib/tags";
 import { ensureAdminApi } from "@/lib/auth";
@@ -7,6 +7,7 @@ import { recordAudit } from "@/lib/audit";
 import { getClientIp } from "@/lib/request-info";
 
 const resolveLookup = async (handle, lookup) => {
+  const prisma = await getPrisma();
   if (lookup === "id") {
     return prisma.blog.findUnique({ where: { id: handle } });
   }
@@ -46,6 +47,7 @@ export async function PUT(request, context) {
     return NextResponse.json({ error: "Missing route params" }, { status: 400 });
   }
   try {
+    const prisma = await getPrisma();
     const session = await ensureAdminApi(request);
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -102,6 +104,7 @@ export async function DELETE(request, context) {
     return NextResponse.json({ error: "Missing route params" }, { status: 400 });
   }
   try {
+    const prisma = await getPrisma();
     const session = await ensureAdminApi(request);
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

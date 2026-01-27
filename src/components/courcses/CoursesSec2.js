@@ -6,6 +6,11 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import styles from "./CoursesSec2.module.css";
 
+function normalizeCourseImageSrc(src) {
+  if (typeof src !== "string") return src;
+  return src.replace(/\.png$/i, ".png");
+}
+
 function normalize(value) {
   return String(value ?? "")
     .toLowerCase()
@@ -186,7 +191,7 @@ export default function CoursesSec2({ courses = [] }) {
                           </span>
                         )}
                         <Image
-                          src={course.image}
+                          src={normalizeCourseImageSrc(course.image)}
                           alt={course.title}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

@@ -1,11 +1,15 @@
 import { notFound } from "next/navigation";
 import BlogForm from "@/components/BlogForm";
-import prisma from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 
-const fetchBlog = async (id) =>
-  prisma.blog.findUnique({
+export const dynamic = "force-dynamic";
+
+const fetchBlog = async (id) => {
+  const prisma = await getPrisma();
+  return prisma.blog.findUnique({
     where: { id },
   });
+};
 
 export const metadata = {
   title: "Edit Blog Post",

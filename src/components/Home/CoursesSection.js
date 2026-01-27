@@ -4,6 +4,11 @@ import Image from "next/image";
 import courses from "@/data/courses.json";
 import { Star } from "lucide-react";
 
+function normalizeCourseImageSrc(src) {
+  if (typeof src !== "string") return src;
+  return src.replace(/\.png$/i, ".png");
+}
+
 function normalize(value) {
   return String(value ?? "")
     .toLowerCase()
@@ -69,7 +74,7 @@ export default function CoursesSection() {
                     </span>
                   )}
                   <Image
-                    src={course.image}
+                    src={normalizeCourseImageSrc(course.image)}
                     alt={course.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

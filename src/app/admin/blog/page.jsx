@@ -1,12 +1,16 @@
 import Link from "next/link";
 import DeleteBlogButton from "@/components/DeleteBlogButton";
-import prisma from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 
-const fetchBlogs = async () =>
-  prisma.blog.findMany({
+export const dynamic = "force-dynamic";
+
+const fetchBlogs = async () => {
+  const prisma = await getPrisma();
+  return prisma.blog.findMany({
     orderBy: { createdAt: "desc" },
     take: 100,
   });
+};
 
 const formatDate = (value) =>
   new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(new Date(value));
