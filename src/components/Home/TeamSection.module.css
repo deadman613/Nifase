@@ -19,7 +19,7 @@
   pointer-events: none;
 }
 
-/* blobs - updated to match website's green theme */
+/* blobs */
 .gradientOrb,
 .gradientOrbRight {
   position: absolute;
@@ -46,20 +46,21 @@
   right: -150px;
 }
 
-.inner {
+.container {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: 64px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
-/* LEFT TEXT SIDE */
-.left {
-  max-width: 560px;
+/* HEADER */
+.header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .chipRow {
@@ -90,10 +91,11 @@
 }
 
 .heading {
-  font-size: clamp(30px, 4vw, 38px);
+  font-size: clamp(30px, 4vw, 42px);
   font-weight: 800;
   color: hsl(var(--foreground) / 0.95);
-  margin: 0 0 10px;
+  margin: 0 0 16px;
+  line-height: 1.2;
 }
 
 .heading span {
@@ -104,45 +106,24 @@
 }
 
 .subtext {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.7;
   color: hsl(var(--muted-foreground));
-  margin: 0 0 20px;
-  max-width: 520px;
-}
-
-.points {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* TRAINERS GRID */
+.trainersGrid {
   display: grid;
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.points li {
-  position: relative;
-  padding-left: 18px;
-  font-size: 13px;
-  color: hsl(var(--foreground) / 0.8);
-  line-height: 1.6;
-}
-
-.points li::before {
-  content: "•";
-  position: absolute;
-  left: 4px;
-  top: 2px;
-  font-size: 16px;
-  color: hsl(var(--primary));
-}
-
-/* RIGHT CARD SIDE */
-.right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* TRAINER CARD */
 .card {
   position: relative;
   padding: 30px 26px 24px;
@@ -154,7 +135,6 @@
     0 0 45px hsl(var(--primary) / 0.15);
   backdrop-filter: blur(24px);
   width: 100%;
-  max-width: 400px;
   overflow: hidden;
   isolation: isolate;
   transition:
@@ -163,7 +143,7 @@
     border-color 0.25s ease;
 }
 
-/* premium gradient border (matches other NIFASE cards) */
+/* premium gradient border */
 .card::before {
   content: '';
   position: absolute;
@@ -223,8 +203,8 @@
 /* avatar ring */
 .avatarRing {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
   margin: 0 auto 20px auto;
   border-radius: 999px;
   background: conic-gradient(from 120deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
@@ -249,7 +229,7 @@
   height: 100%;
   border-radius: 999px;
   object-fit: cover;
-  object-fit: top;
+  object-position: top;
   border: 3px solid hsl(var(--background));
   z-index: 1;
 }
@@ -265,7 +245,7 @@
 }
 
 .role {
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: hsl(var(--muted-foreground));
@@ -281,9 +261,10 @@
 }
 
 .experience {
-  font-size: 13px;
+  font-size: 12px;
   color: hsl(var(--foreground) / 0.85);
   margin: 0 0 4px;
+  text-align: center;
 }
 
 .highlight {
@@ -291,6 +272,8 @@
   color: hsl(var(--foreground) / 0.8);
   margin: 0 0 16px;
   text-align: center;
+  line-height: 1.5;
+  min-height: 60px;
 }
 
 /* rating */
@@ -387,35 +370,185 @@
   color: hsl(var(--foreground) / 0.85);
 }
 
-/* responsive */
-@media (max-width: 960px) {
-  .inner {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
+/* FEATURES LIST */
+.features {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 0 0;
+}
 
-  .left {
-    max-width: 640px;
-    margin: 0 auto;
-    text-align: left;
-  }
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
 
-  .right {
-    justify-content: center;
+.points li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 14px;
+  color: hsl(var(--foreground) / 0.8);
+  line-height: 1.6;
+}
+
+.points li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  top: 2px;
+  font-size: 18px;
+  color: hsl(var(--primary));
+}
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Large tablets and small desktops (3 columns → 2 columns) */
+@media (max-width: 1200px) {
+  .trainersGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    max-width: 800px;
+  }
+  
+  .section {
+    padding: 72px 6%;
   }
 }
 
+/* Tablets (2 columns continue) */
+@media (max-width: 960px) {
+  .heading {
+    font-size: clamp(28px, 4vw, 36px);
+  }
+  
+  .subtext {
+    font-size: 14px;
+  }
+  
+  .container {
+    gap: 40px;
+  }
+  
+  .trainersGrid {
+    gap: 24px;
+  }
+}
+
+/* Small tablets (2 columns → 1 column) */
+@media (max-width: 768px) {
+  .trainersGrid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    gap: 32px;
+  }
+  
+  .section {
+    padding: 64px 5%;
+  }
+  
+  .container {
+    gap: 36px;
+  }
+  
+  .header {
+    max-width: 100%;
+  }
+  
+  .avatarRing {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .highlight {
+    min-height: auto;
+  }
+}
+
+/* Mobile devices */
 @media (max-width: 640px) {
   .section {
-    padding: 88px 6%;
+    padding: 56px 5%;
   }
-
-  .left {
-    text-align: left;
+  
+  .heading {
+    margin-bottom: 12px;
   }
-
+  
+  .subtext {
+    font-size: 13px;
+  }
+  
   .card {
-    margin: 0 auto;
-    max-width: 360px;
+    padding: 26px 22px 22px;
+    border-radius: 28px;
+  }
+  
+  .avatarRing {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .name {
+    font-size: 17px;
+  }
+  
+  .highlight {
+    font-size: 12px;
+  }
+  
+  .points li {
+    font-size: 13px;
+  }
+  
+  .features {
+    padding-top: 24px;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .section {
+    padding: 48px 4%;
+  }
+  
+  .chipText {
+    font-size: 11px;
+  }
+  
+  .card {
+    max-width: 100%;
+  }
+  
+  .avatarRing {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .role {
+    font-size: 10px;
+  }
+  
+  .name {
+    font-size: 16px;
+  }
+  
+  .experience {
+    font-size: 11px;
+    text-overflow: clip;
+  }
+  
+  .highlight {
+    font-size: 12px;
+  }
+  
+  .badge span {
+    font-size: 10px;
+  }
+  
+  .points li {
+    font-size: 12px;
+    padding-left: 18px;
   }
 }
